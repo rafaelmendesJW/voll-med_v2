@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import voll.med.api.endereco.Endereco;
 
-
 @Table(name = "pacientes")
 @Entity(name = "pacientes")
 @Getter
@@ -31,10 +30,10 @@ public class Paciente {
     @Valid
     @Embedded
     private Endereco endereco;
-   
+    private Boolean ativo;
 
-
-    public Paciente(DadosCadastroPaciente dados){
+    public Paciente(DadosCadastroPaciente dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -43,19 +42,21 @@ public class Paciente {
 
     }
 
-
-
     public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
-        if(dados.email() != null){
+        if (dados.email() != null) {
             this.email = dados.email();
         }
-        if(dados.telefone() != null){
+        if (dados.telefone() != null) {
             this.telefone = dados.telefone();
         }
-        if(dados.endereco() != null){
+        if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
 
     }
-    
+
+    public void inativar() {
+        this.ativo = false;
+    }
+
 }
