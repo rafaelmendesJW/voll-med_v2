@@ -1,7 +1,5 @@
 package voll.med.api.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,13 +17,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import voll.med.api.medicos.DadosListagemMedico;
-import voll.med.api.pacientes.DadosAtualizacaoPaciente;
-import voll.med.api.pacientes.DadosCadastroPaciente;
-import voll.med.api.pacientes.DadosDetalhamentoPaciente;
-import voll.med.api.pacientes.DadosListagemPaciente;
-import voll.med.api.pacientes.Paciente;
-import voll.med.api.pacientes.PacienteRepository;
+import voll.med.api.domain.medicos.DadosListagemMedico;
+import voll.med.api.domain.pacientes.DadosAtualizacaoPaciente;
+import voll.med.api.domain.pacientes.DadosCadastroPaciente;
+import voll.med.api.domain.pacientes.DadosDetalhamentoPaciente;
+import voll.med.api.domain.pacientes.DadosListagemPaciente;
+import voll.med.api.domain.pacientes.Paciente;
+import voll.med.api.domain.pacientes.PacienteRepository;
 
 @RestController
 @RequestMapping("pacientes")
@@ -41,7 +39,6 @@ public class PacienteController {
         var uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoPaciente(paciente));
 
-       
     }
 
     @GetMapping
@@ -70,9 +67,8 @@ public class PacienteController {
         return ResponseEntity.noContent().build();
     }
 
-
     @GetMapping("/{id}")
-    public ResponseEntity detalhar(@PathVariable Long id){
+    public ResponseEntity detalhar(@PathVariable Long id) {
         var paciente = repository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
     }
