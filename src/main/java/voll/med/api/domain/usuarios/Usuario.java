@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 
-public class Usuarios {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
