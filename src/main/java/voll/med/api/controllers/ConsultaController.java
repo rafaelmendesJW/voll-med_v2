@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import voll.med.api.domain.consultas.AgendaDeConsultas;
 import voll.med.api.domain.consultas.DadosAgendamentoConsulta;
+import voll.med.api.domain.consultas.DadosCancelamentoConsulta;
 import voll.med.api.domain.consultas.DadosDetalhamentoConsulta;
 
 @RestController
