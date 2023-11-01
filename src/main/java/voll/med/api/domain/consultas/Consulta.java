@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
 import voll.med.api.domain.medicos.Medico;
 import voll.med.api.domain.pacientes.Paciente;
 
-@Entity(name = "consulta")
 @Table(name = "consultas")
+@Entity(name = "Consulta")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
