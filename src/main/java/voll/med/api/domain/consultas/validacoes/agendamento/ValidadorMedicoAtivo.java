@@ -1,4 +1,4 @@
-package voll.med.api.domain.consultas.validacoes;
+package voll.med.api.domain.consultas.validacoes.agendamento;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
