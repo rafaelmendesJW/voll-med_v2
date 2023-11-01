@@ -13,7 +13,6 @@ import jakarta.validation.Valid;
 import voll.med.api.domain.consultas.AgendaDeConsultas;
 import voll.med.api.domain.consultas.DadosAgendamentoConsulta;
 import voll.med.api.domain.consultas.DadosCancelamentoConsulta;
-import voll.med.api.domain.consultas.DadosDetalhamentoConsulta;
 
 @RestController
 @RequestMapping("consultas")
@@ -24,10 +23,9 @@ public class ConsultaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) {
-        agenda.agendar(dados);
-
-        return ResponseEntity.ok(new DadosDetalhamentoConsulta(null, null, null, null));
+    public ResponseEntity   agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) {
+        var dto = agenda.agendar(dados);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping
